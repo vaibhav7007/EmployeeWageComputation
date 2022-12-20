@@ -15,22 +15,23 @@ namespace EmployeeWagesComputation
             Random random = new Random();
             int empInput = random.Next(0, 3);
 
-            if (FULL_TIME == empInput)
+            switch (empInput)
             {
-                Console.WriteLine("Employee is Full time");
-                empHrs = 8;
-            }
-            else if (PART_TIME == empInput)
-            {
-                Console.WriteLine("Employee is part time");
-                empHrs = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee is absent");
-                empHrs = 0;
-            }
+                case 1:
+                    Console.WriteLine("Employee is Full time");
+                    empHrs = 8;
+                    break;
 
+                case 2:
+                    Console.WriteLine("Employee is part time");
+                    empHrs = 4;
+                    break;
+
+                default:
+                    Console.WriteLine("Employee is absent");
+                    empHrs = 0;
+                    break;
+            }
 
             //Uc2 Calculate daily wages
             empwage = EMP_RATE_PER_HR * empHrs;
