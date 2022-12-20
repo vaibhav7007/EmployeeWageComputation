@@ -10,12 +10,13 @@ namespace EmployeeWagesComputation
             const int PART_TIME = 2;
             const int EMP_RATE_PER_HR = 20;
             const int MAX_WORKING_DAYS = 20;
-            int empHrs = 0, empwage = 0, totalwage = 0, day = 1;
+            const int MAX_WORKING_Hrs = 80;
+            int empHrs = 0, empwage = 0, totalwage = 0, day = 1, totalHrs = 0;
             Console.WriteLine("Welcome to the employee Wages Computation Practices");
             //UC1 Employee attendance
             Random random = new Random();
 
-            for (day = 1; day <= MAX_WORKING_DAYS; day++)
+            while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_Hrs)
             {
                 int empInput = random.Next(0, 3);
                 switch (empInput)
@@ -38,8 +39,10 @@ namespace EmployeeWagesComputation
                 //Uc2 Calculate daily wages
                 empwage = EMP_RATE_PER_HR * empHrs;
                 totalwage += empwage;
+                totalHrs += empHrs;
+                day++;
             }
-            Console.WriteLine("Total wage for {0} days:{1}", (day - 1), totalwage);
+            Console.WriteLine("Total wage for {0} days:{1} and Hrs{2}", (day - 1), totalwage, (totalHrs - empHrs));
             Console.ReadLine();
         }
     }
