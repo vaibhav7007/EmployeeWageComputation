@@ -4,16 +4,22 @@ namespace EmployeeWagesComputation
 {
     internal class EmpWage
     {
+        public const int FULL_TIME = 1;
+        public const int PART_TIME = 2;
+        public const int EMP_RATE_PER_HR = 20;
+        public const int MAX_WORKING_DAYS = 20;
+        public const int MAX_WORKING_Hrs = 80;
         static void Main(string[] args)
         {
-            const int FULL_TIME = 1;
-            const int PART_TIME = 2;
-            const int EMP_RATE_PER_HR = 20;
-            const int MAX_WORKING_DAYS = 20;
-            const int MAX_WORKING_Hrs = 80;
-            int empHrs = 0, empwage = 0, totalwage = 0, day = 1, totalHrs = 0;
             Console.WriteLine("Welcome to the employee Wages Computation Practices");
-            //UC1 Employee attendance
+            EmpWage.CalculateWage();
+            Console.ReadLine();
+        }
+
+        //UC7 Compute Employee Wage using class method
+        public static void CalculateWage()
+        {
+            int empHrs = 0, empwage = 0, totalwage = 0, day = 1, totalHrs = 0;
             Random random = new Random();
 
             while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_Hrs)
