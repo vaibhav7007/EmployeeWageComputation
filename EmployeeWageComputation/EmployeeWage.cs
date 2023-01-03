@@ -6,23 +6,23 @@ namespace EmployeeWagesComputation
     {
         public const int FULL_TIME = 1;
         public const int PART_TIME = 2;
-        public const int EMP_RATE_PER_HR = 20;
-        public const int MAX_WORKING_DAYS = 20;
-        public const int MAX_WORKING_Hrs = 80;
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the employee Wages Computation Practices");
-            EmpWage.CalculateWage();
+            //UC8 Computing Employee Wage for multiple companies
+            CalculateWage("Bridgelabz", 30, 25, 80);
+            CalculateWage("Microsoft", 40, 30, 70);
+            CalculateWage("IBM", 35, 29, 80);
             Console.ReadLine();
         }
 
         //UC7 Compute Employee Wage using class method
-        public static void CalculateWage()
+        public static void CalculateWage(string Company, int emp_rate_per_Hr, int max_Working_days, int max_Working_Hrs)
         {
             int empHrs = 0, empwage = 0, totalwage = 0, day = 1, totalHrs = 0;
             Random random = new Random();
 
-            while (day <= MAX_WORKING_DAYS && totalHrs <= MAX_WORKING_Hrs)
+            while (day <= max_Working_days && totalHrs <= max_Working_Hrs)
             {
                 int empInput = random.Next(0, 3);
                 switch (empInput)
@@ -43,12 +43,12 @@ namespace EmployeeWagesComputation
                         break;
                 }
                 //Uc2 Calculate daily wages
-                empwage = EMP_RATE_PER_HR * empHrs;
+                empwage = emp_rate_per_Hr * empHrs;
                 totalwage += empwage;
                 totalHrs += empHrs;
                 day++;
             }
-            Console.WriteLine("Total wage for {0} days:{1} and Hrs{2}", (day - 1), totalwage, (totalHrs - empHrs));
+            Console.WriteLine("Total wage for{3} {0} days:{1} and Hrs{2}", totalwage, (day - 1), (totalHrs - empHrs), Company);
             Console.ReadLine();
         }
     }
